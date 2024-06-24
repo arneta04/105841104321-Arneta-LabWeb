@@ -3,33 +3,62 @@ import React from 'react'
 
 const App = () => {
   return (
-    <View style={{ 
-      flex:1,}}>
-        
-    <View style={{ 
-      flex:1,
-      flexDirection:'row',}}>
-      <view style={{
+    <View style ={{
+      flex: 1,
+      flexDirection:"row"
+    }}>
+      <View style = {{
         flex: 1,
-        backgroundColor: 'red',
+        alignItems:"flex-end",
+        justifyContent:"center",
       }}>
-      </view>
-      <view style={{
-        flex: 1,
-        backgroundColor: 'blue',
+        <View style={{
+          width: 140,
+          height :80,
+          backgroundColor: "red",
+          borderRadius: 10,
+          marginright: 10,
+          justifyContent:"center",
+          alignItems:"center",
+        }}>
+          <Text style={{
+            color:"white",
+            fontsize:25,
+          }}>
+            SIGN IN 
+          </Text>
+        </View>
+      </View>
+
+      <View style ={{
+        flex:1,
+        alignItems:"flex-start",
+        justifyContent:"center",
       }}>
-      </view>
-    </View>
-    <view style={{
-        flex: 1,
-        backgroundColor: 'yellow',
+        <View style ={{
+          flex:1,
+          alignItems:"flex-start",
+          justifyContent:"center",
+        }}>
+        <View style ={{
+          width:140,
+          height:80,
+          backgroundColor:"blue",
+          borderRadius:10,
+          marginLeft:10,
+          justifyContent:"center",
+          alignItems:"center",
+        }}>
+
+      <Text style ={{
+        color:"white",
+        fontsize:25,
       }}>
-      </view>
-      <view style={{
-        flex: 1,
-        backgroundColor: 'green',
-      }}>
-      </view>
+        SIGN UP
+      </Text>
+          </View>
+        </View>
+      </View>
     </View>
   )
 }
