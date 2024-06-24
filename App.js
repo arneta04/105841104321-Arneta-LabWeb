@@ -1,68 +1,66 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TextInput } from 'react-native'
 import React from 'react'
 
-const App = () => {
+// custom component
+const ButtonCostum = ({ text, color }) => {
+  return (
+    <View>
+      <View style = {{
+        width: 250,
+        height: 100,
+        backgroundColor: color,
+        borderRadius: 50,
+        marginBottom: 10,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}>
+        <Text style ={{
+          textAlign: 'center',
+          color:'white',
+          fontSize: 30,
+          fontWeight: 'bold',
+        }}>
+          {text}
+        </Text>
+      </View>
+      <Text></Text>
+    </View>
+  )
+}
+// Custom component, text input
+const TextInputCustom = ({ placeholder, color, typeKeyboard}) => {
+  return (
+    <TextInput 
+    keyboardType={typeKeyboard}
+    placeholder={placeholder}
+    style = {{
+    width: 250,
+    height:50,
+    borderColor: color,
+    borderWidth:3,
+    marginBottom: 10,
+    paddingLeft: 10,
+      }}
+    />
+  )
+}
+export default function App () {
   return (
     <View style ={{
       flex: 1,
-      flexDirection:"row"
+      justifyContent:'center',
+      alignItems:'center',
     }}>
-      <View style = {{
-        flex: 1,
-        alignItems:"flex-end",
-        justifyContent:"center",
-      }}>
-        <View style={{
-          width: 140,
-          height :80,
-          backgroundColor: "red",
-          borderRadius: 10,
-          marginright: 10,
-          justifyContent:"center",
-          alignItems:"center",
-        }}>
-          <Text style={{
-            color:"white",
-            fontsize:25,
-          }}>
-            SIGN IN 
-          </Text>
-        </View>
-      </View>
+      
+      <ButtonCostum text ="login" color="green" />
+      <ButtonCostum text ="register" color="blue" />
+      <ButtonCostum text ="google" color="red" />
+      
+      <TextInputCustom placeholder="masukkan nama" color="pink" typeKeyboard="default" />
+      <TextInputCustom placeholder="masukkan nomor hp" color="pink" typeKeyboard="numerik" />
 
-      <View style ={{
-        flex:1,
-        alignItems:"flex-start",
-        justifyContent:"center",
-      }}>
-        <View style ={{
-          flex:1,
-          alignItems:"flex-start",
-          justifyContent:"center",
-        }}>
-        <View style ={{
-          width:140,
-          height:80,
-          backgroundColor:"blue",
-          borderRadius:10,
-          marginLeft:10,
-          justifyContent:"center",
-          alignItems:"center",
-        }}>
 
-      <Text style ={{
-        color:"white",
-        fontsize:25,
-      }}>
-        SIGN UP
-      </Text>
-          </View>
-        </View>
-      </View>
     </View>
   )
 }
 
-export default App
-
-const styles = StyleSheet.create({})
