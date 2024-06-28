@@ -1,66 +1,29 @@
-import { StyleSheet, Text, View, TextInput } from 'react-native'
-import React from 'react'
+// Rest of the import statements
+import { useFonts } from 'expo-font';
+import {View, Text} from 'react-native';
 
-// custom component
-const ButtonCostum = ({ text, color }) => {
+export default function App() {
+  const [dapatFont] = useFonts({
+    'MetroBlack': require('./assets/fonts/Metropolis-Black.otf'),
+    'Semibold': require('./assets/fonts/Metropolis-SemiBold.otf'),
+    'Bold': require('./assets/fonts/Metropolis-Bold.otf'),
+    'Light': require('./assets/fonts/Metropolis-Light.otf'),
+  });
+  if (!dapatFont) {
+    return <text> font tidak di temukan </text>
+  }
   return (
-    <View>
-      <View style = {{
-        width: 250,
-        height: 100,
-        backgroundColor: color,
-        borderRadius: 50,
-        marginBottom: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-        <Text style ={{
-          textAlign: 'center',
-          color:'white',
-          fontSize: 30,
-          fontWeight: 'bold',
-        }}>
-          {text}
-        </Text>
-      </View>
-      <Text></Text>
-    </View>
-  )
-}
-// Custom component, text input
-const TextInputCustom = ({ placeholder, color, typeKeyboard}) => {
-  return (
-    <TextInput 
-    keyboardType={typeKeyboard}
-    placeholder={placeholder}
-    style = {{
-    width: 250,
-    height:50,
-    borderColor: color,
-    borderWidth:3,
-    marginBottom: 10,
-    paddingLeft: 10,
-      }}
-    />
-  )
-}
-export default function App () {
-  return (
-    <View style ={{
-      flex: 1,
+    <View style= {{
+      flex:1,
       justifyContent:'center',
-      alignItems:'center',
+      alignItems:'center'
     }}>
-      
-      <ButtonCostum text ="login" color="green" />
-      <ButtonCostum text ="register" color="blue" />
-      <ButtonCostum text ="google" color="red" />
-      
-      <TextInputCustom placeholder="masukkan nama" color="pink" typeKeyboard="default" />
-      <TextInputCustom placeholder="masukkan nomor hp" color="pink" typeKeyboard="numerik" />
 
+      <Text style ={{  fontFamily: 'MetroBlack'}}> Font Metropolis Black </Text>
+      <Text style ={{  fontFamily: 'Semibold'}}> Font Metropolis Black </Text>
+      <Text style ={{  fontFamily: 'Bold'}}> Font Metropolis Black </Text>
+      <Text style ={{  fontFamily: 'Light'}}> Font Metropolis Black </Text>
 
     </View>
   )
 }
-
