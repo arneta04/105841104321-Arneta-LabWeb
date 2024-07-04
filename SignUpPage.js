@@ -21,7 +21,7 @@ const TextInputCustom = ({ placeholder, color, typeKeyboard,secureTextEntry }) =
   );
 };
 
-export default function SignUp() {
+export default function SignUp({navigation}) {
   const [dapatFont] = useFonts({
   'Metro-Black' : require('./assets/fonts/Metropolis-Black.otf')  ,
   'Metro-Bold' : require('./assets/fonts/Metropolis-Bold.otf')  ,
@@ -41,7 +41,7 @@ export default function SignUp() {
       <TextInputCustom placeholder="Name" color="gray" typeKeyboard="default"/>
       <TextInputCustom placeholder="Email" color="gray" typeKeyboard="email-address"/>
       <TextInputCustom placeholder="Password" color="gray" typeKeyboard="default" secureTextEntry={true}/>
-      <ButtonCustom text="SIGN UP" color="red" onPress={() => {}}/>
+      <ButtonCustom text="SIGN UP" color="red" onPress={() => navigation.navigate('Login')}/>
       <Text style ={[styles.signInText, {fontFamily:'Metro-Medium'}]}> Already have an account?</Text>
       <Text style ={[styles.orText,{fontFamily:'Metro-Medium'}]}> or signup with social account</Text>
       <View style = {styles.socialContainer}>

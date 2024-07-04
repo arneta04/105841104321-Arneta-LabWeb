@@ -19,15 +19,15 @@ const TextInputCustom = ({ placeholder, color, typeKeyboard,}) => {
   );
 };
 
-export default function Login() {
+export default function Login({navigation}) {
   return (
     <View style = {styles.container}>
       <Text style={[styles.title, { fontFamily: 'Metro-Bold' }]}
->Sign up</Text>
+>Login</Text>
       <TextInputCustom placeholder="Email" color="gray" typeKeyboard="email-address"/>
       <TextInputCustom placeholder="Password" color="gray" typeKeyboard="default" secureTextEntry={true}/>
       <Text style ={styles.forgotPasswordText}> forgot your password?</Text>
-      <ButtonCustom text="LOGIN" color="red" onPress={() => {}}/>
+      <ButtonCustom text="LOGIN" color="red" onPress={() => navigation.navigate('ForgetPassword')}/>
       <Text style ={styles.orText}> or login with social account</Text>
       <View style = {styles.socialContainer}>
         <TouchableOpacity onPress={() => {}}>

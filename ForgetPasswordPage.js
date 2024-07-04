@@ -21,7 +21,7 @@ const TextInputCustom = ({ placeholder, color, typeKeyboard, secureTextEntry}) =
   );
 };
 
-export default function forgotPassword() {
+export default function forgotPassword({navigation}) {
   const [dapatFont] = useFonts({
   'Metro-Black' : require('./assets/fonts/Metropolis-Black.otf')  ,
   'Metro-Bold' : require('./assets/fonts/Metropolis-Bold.otf')  ,
@@ -39,7 +39,7 @@ export default function forgotPassword() {
       <Text style={[styles.instruction,{ fontFamily:'Metro-Medium'}]}> Please, enter your Email address. you will receive a link to create a new password via email</Text>
       <TextInputCustom placeholder="Email" color="gray" typeKeyboard="email-address"/>
       <Text style={[styles.errorText,{ fontFamily:'Metro-Medium'}]}> not a valid email address. should be your@email.com</Text>
-      <ButtonCustom text="SEND" color="red" onPress={() => {}}></ButtonCustom>
+      <ButtonCustom text="SEND" color="red" onPress={() => navigation.navigate('ForgetPassword')}></ButtonCustom>
     </View>
   );
 }
