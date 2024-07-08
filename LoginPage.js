@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity,Image} from 'react-native';
 
+
 const ButtonCustom = ({ text, color, onPress}) => {
   return (
     <TouchableOpacity onPress={onPress} style = {[styles.button, { backgroundColor: color}]}>
@@ -26,7 +27,9 @@ export default function Login({navigation}) {
 >Login</Text>
       <TextInputCustom placeholder="Email" color="gray" typeKeyboard="email-address"/>
       <TextInputCustom placeholder="Password" color="gray" typeKeyboard="default" secureTextEntry={true}/>
+      <TouchableOpacity onPress={() => navigation.navigate ('ForgetPassword')}>
       <Text style ={styles.forgotPasswordText}> forgot your password?</Text>
+      </TouchableOpacity>
       <ButtonCustom text="LOGIN" color="red" onPress={() => navigation.navigate('ForgetPassword')}/>
       <Text style ={styles.orText}> or login with social account</Text>
       <View style = {styles.socialContainer}>

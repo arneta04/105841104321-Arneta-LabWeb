@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity,Image} from 'react-native';
 import { useFonts } from 'expo-font';
 
+
 const ButtonCustom = ({ text, color, onPress}) => {
   return (
     <TouchableOpacity onPress={onPress} style = {[styles.button, { backgroundColor: color}]}>
@@ -42,8 +43,12 @@ export default function SignUp({navigation}) {
       <TextInputCustom placeholder="Email" color="gray" typeKeyboard="email-address"/>
       <TextInputCustom placeholder="Password" color="gray" typeKeyboard="default" secureTextEntry={true}/>
       <ButtonCustom text="SIGN UP" color="red" onPress={() => navigation.navigate('Login')}/>
+      <TouchableOpacity onPress={() => navigation.navigate ('Login')}>
       <Text style ={[styles.signInText, {fontFamily:'Metro-Medium'}]}> Already have an account?</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate ('')}>
       <Text style ={[styles.orText,{fontFamily:'Metro-Medium'}]}> or signup with social account</Text>
+      </TouchableOpacity>
       <View style = {styles.socialContainer}>
         <TouchableOpacity onPress={() => {}}>
           <Image source={require('./assets/gambar/facebook.png')} style={styles.socialIcon}/>
