@@ -1,13 +1,21 @@
 import * as React from 'react';
-import { View, Text, Button, Image, TouchableOpacity, TouchableOpacityBase } from 'react-native';
+import { View, Text, Button, Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginPage from './LoginPage';
+import Profil from './ProfilePage';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeAktif from './assets/gambar/home-aktif.png';
 import HomeInaktif from './assets/gambar/home.png';
-import Shop from './assets/gambar/shop-aktif.png'
-import ShopInaktif from './assets/gambar/shop-non-aktif.png'
+import Shop from './assets/gambar/shop-aktif.png';
+import ShopInaktif from './assets/gambar/shop-non-aktif.png';
+import BagAktif from './assets/gambar/bag-activated.png';
+import BagInaktif from './assets/gambar/bag-inactive.png';
+import FavoriteAktif from './assets/gambar/favorites-activated.png';
+import FavoriteInaktif from './assets/gambar/favorites-inactive.png';
+import ProfilAktif from './assets/gambar/profil-activated.png';
+import ProfilInaktif from './assets/gambar/profil-inactive.png';
+
 const Tab = createBottomTabNavigator();
 function MyTabs() {
   return (
@@ -31,6 +39,42 @@ function MyTabs() {
           headerShown: false, tabBarIcon: ({ focused }) => (
             <Image
               source={focused ? Shop : ShopInaktif}
+              style={{ width: 40, height: 40 }}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Bag"
+        component={HomeScreen}
+        options={{
+          headerShown: false, tabBarIcon: ({ focused }) => (
+            <Image
+              source={focused ?  BagAktif: BagInaktif}
+              style={{ width: 40, height: 40 }}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Favorite"
+        component={HomeScreen}
+        options={{
+          headerShown: false, tabBarIcon: ({ focused }) => (
+            <Image
+              source={focused ? FavoriteAktif : FavoriteInaktif}
+              style={{ width: 40, height: 40 }}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profil"
+        component={Profil}
+        options={{
+          headerShown: false, tabBarIcon: ({ focused }) => (
+            <Image
+              source={focused ? ProfilAktif : ProfilInaktif}
               style={{ width: 40, height: 40 }}
             />
           ),
@@ -65,4 +109,4 @@ function App() {
   );
 }
 
-export default App;
+export default App;
