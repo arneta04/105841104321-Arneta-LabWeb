@@ -1,110 +1,87 @@
-import * as React from 'react';
-import { Image } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import LoginPage from './LoginPage';
-import Profil from './ProfilePage';
-import HomeScreen from './HomePage';
-import ShopScreen from './ShopPage';
-import BagScreen from './BagPage';
-import FavoriteScreen from './FavoritePage';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import HomeAktif from './assets/gambar/home-aktif.png';
-import HomeInaktif from './assets/gambar/home.png';
-import Shop from './assets/gambar/shop-aktif.png';
-import ShopInaktif from './assets/gambar/shop-non-aktif.png';
-import BagAktif from './assets/gambar/bag-activated.png';
-import BagInaktif from './assets/gambar/bag-inactive.png';
-import FavoriteAktif from './assets/gambar/favorites-activated.png';
-import FavoriteInaktif from './assets/gambar/favorites-inactive.png';
-import ProfilAktif from './assets/gambar/profil-activated.png';
-import ProfilInaktif from './assets/gambar/profil-inactive.png';
+import React from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-const Tab = createBottomTabNavigator();
-
-function MyTabs() {
+const App = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen
-        name="Home"
-        component={HomeScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={focused ? HomeAktif : HomeInaktif}
-              style={{ width: 40, height: 40 }}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Shop"
-        component={ShopScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={focused ? Shop : ShopInaktif}
-              style={{ width: 40, height: 40 }}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Bag"
-        component={BagScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={focused ? BagAktif : BagInaktif}
-              style={{ width: 40, height: 40 }}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Favorite"
-        component={FavoriteScreen}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={focused ? FavoriteAktif : FavoriteInaktif}
-              style={{ width: 40, height: 40 }}
-            />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Profil"
-        component={Profil}
-        options={{
-          headerShown: false,
-          tabBarIcon: ({ focused }) => (
-            <Image
-              source={focused ? ProfilAktif : ProfilInaktif}
-              style={{ width: 40, height: 40 }}
-            />
-          ),
-        }}
-      />
-    </Tab.Navigator>
-  );
-}
+    <View style={styles.container}>
+      {/* Header dengan tombol back dan judul */}
+      <View style={styles.header}>
+        <TouchableOpacity style={styles.backButton}>
+          <Ionicons name="chevron-back" size={24} color="black" />
+        </TouchableOpacity>
+        <Text style={styles.title}>Crop the item</Text>
+      </View>
 
-const Stack = createNativeStackNavigator();
+      {/* Gambar dengan kotak crop */}
+      <View style={styles.imageContainer}>
+        <Image
+          source={require('./assets/gambar/8.png')}  // ganti dengan gambar yang Anda miliki
+          style={styles.image}
+        />
+        <View style={styles.cropBox} />
+      </View>
 
-function App() {
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home" component={MyTabs} />
-        <Stack.Screen name="Login" component={LoginPage} />
-      </Stack.Navigator>
-    </NavigationContainer>
+      {/* Tombol Search */}
+      <TouchableOpacity style={styles.searchButton}>
+        <Ionicons name="search" size={24} color="white" />
+      </TouchableOpacity>
+    </View>
   );
-}
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingTop: 50,
+    paddingBottom: 10,
+    paddingHorizontal: 15,
+    backgroundColor: 'white',
+  },
+  backButton: {
+    marginRight: 10,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    flex: 1,
+  },
+  imageContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  cropBox: {
+    position: 'absolute',
+    borderWidth: 2,
+    borderColor: 'black',
+    width: 150,
+    height: 150,
+    top: '10%', // Atur posisi vertikal kotak agar sesuai dengan area wajah
+  },
+  searchButton: {
+    backgroundColor: 'red',
+    padding: 15,
+    borderRadius: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    alignSelf: 'center',
+    position: 'absolute',
+    bottom: 40,
+    width: 60,
+    height: 60,
+  },
+});
 
 export default App;
